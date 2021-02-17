@@ -1,0 +1,104 @@
+/*
+DESIGN OVERLAY
+*/
+
+/*
+GENERIC DESIGN
+*/
+
+body{
+    background-color: #a9a9a9;
+}
+
+main{
+    width:80%;
+    margin: auto;
+
+}
+/*
+NAVIGATION
+*/
+header{
+    background-color: #808080;
+}
+
+nav ul {
+    display: flex;
+    width: 800px;
+    margin: auto;
+    height: 50px;
+}
+
+nav ul li {
+    width: 20%;
+    height: inherit;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul li a{
+    display: inline-block;
+    color: lightgrey;
+    padding: 17px 0 12px 0;
+    width: 100%;
+    text-align: center;
+
+}
+
+nav a span:after{
+    display: block;
+    width:50%;
+    margin: auto;
+    content: '';
+    padding-bottom: 5px;
+    border-bottom: 3px solid lightskyblue;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+nav a:hover span:after{
+    transform: scaleX(1);
+}
+
+nav ul li a:hover{
+    color: white;
+    transition-duration: 500ms;
+}
+
+/*
+TEXT DECORATION
+*/
+
+p,a,li,h1,h2,h3{
+    font-family: Verdana, sans-serif;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+/*
+WHO AM I TAGS
+*/
+
+#WhoAmI{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10%;
+    padding: 5%;
+    margin-top: 5%;
+
+}
+
+#WhoAmIText{
+    background-color: #f0efef;
+    padding: 5px;
+    border-width: 5px;
+    border-style: outset;
+    grid-column: 1;
+}
+
+#WhoAmIPicture{
+    grid-column: 2;
+}
