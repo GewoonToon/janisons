@@ -102,3 +102,16 @@ WHO AM I TAGS
 #WhoAmIPicture{
     grid-column: 2;
 }
+/*
+DYNAMIC BUTTON TAGS
+ */
+
+.projectButtons{
+    display: flex;
+}
+
+.projectButton{
+    padding: 10px;
+    border: 2px solid #808080;
+    margin: 2px;
+}
