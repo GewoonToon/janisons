@@ -9,15 +9,14 @@
 <body>
 <div th:replace="fragments/header :: header">Header</div>
 <main>
-
+<div id="ProjectList">
     <div class="projectButtons" th:each="projectName, iStat : ${projectNames}">
 
         <a class="projectButton" th:href="@{|/projectdetails/${iStat.index}|}"
            th:text="|${projectName}|">Project name</a>
 
-
     </div>
-
+</div>
 
 </main>
 </body>

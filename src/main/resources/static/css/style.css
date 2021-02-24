@@ -72,11 +72,13 @@ TEXT DECORATION
 
 p,a,li,h1,h2,h3{
     font-family: Verdana, sans-serif;
+    padding: 2px;
 }
 
 h1{
     font-size: 2rem;
 }
+
 
 /*
 WHO AM I TAGS
@@ -87,7 +89,7 @@ WHO AM I TAGS
     grid-template-columns: 2fr 1fr;
     grid-gap: 10%;
     padding: 5%;
-    margin-top: 5%;
+
 
 }
 
@@ -106,6 +108,10 @@ WHO AM I TAGS
 DYNAMIC BUTTON TAGS
  */
 
+#ProjectList{
+    padding:5%;
+}
+
 .projectButtons{
     display: flex;
 }
@@ -115,3 +121,4 @@ DYNAMIC BUTTON TAGS
     border: 2px solid #808080;
     margin: 2px;
 }
+
