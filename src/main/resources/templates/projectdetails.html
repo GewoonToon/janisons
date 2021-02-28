@@ -15,15 +15,24 @@
     </div>
 
 <div th:if="${project!=null}">
-
-    <form th:action="@{|/projectdetails/${(index+-1)}|}">
+<div class="projectButtons">
+    <form th:if="${index==1}" th:action="@{|/projectdetails/${(count)}|}">
         <input type="submit" value="<"/>
     </form>
 
-    <form th:action="@{|/projectdetails/${(index+1)}|}">
+    <form th:if="${index!=1}" th:action="@{|/projectdetails/${(index+-1)}|}">
+        <input type="submit" value="<"/>
+    </form>
+
+
+    <form th:if="${count==index}" th:action="@{|/projectdetails/1|}">
         <input type="submit" value=">"/>
     </form>
 
+    <form th:if="${count!=index}" th:action="@{|/projectdetails/${(index+1)}|}">
+        <input type="submit" value=">"/>
+    </form>
+</div>
     <div class="startgrid">
         <p>Project name: </p>
         <p class="secondcol" th:text="${project.getProject_name()}">Project name</p>
