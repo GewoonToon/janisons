@@ -14,8 +14,6 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
-    private final String[] projectNames = {"Modernising the building", "Improving work efficiency", "Removing excess data", "Making an app"};
-
     @Autowired
     private ProjectRepository projectRepository;
 
