@@ -10,10 +10,10 @@
 <div th:replace="fragments/header :: header">Header</div>
 <main>
 <div id="ProjectList">
-    <div class="projectButtons" th:each="projectName, iStat : ${projectNames}">
+    <div class="projectButtons" th:each="project : ${projects}">
 
-        <a class="projectButton" th:href="@{|/projectdetails/${iStat.index}|}"
-           th:text="|${projectName}|">Project name</a>
+        <a class="projectButton" th:href="@{|/projectdetails/${project.getId()}|}"
+           th:text="|${project.getProject_name()}|">Project name</a>
 
     </div>
 </div>

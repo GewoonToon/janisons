@@ -9,12 +9,13 @@
 <body>
 <div th:replace="fragments/header :: header">Header</div>
 <main>
+
     <div th:if="${errors}">
         <p th:each="error : ${errors}" th:text="${error}">error</p>
     </div>
 
+<div th:if="${project!=null}">
 
-    <h1 th:text="${projectName}">projectdetails</h1>
     <form th:action="@{|/projectdetails/${(index+-1)}|}">
         <input type="submit" value="<"/>
     </form>
@@ -23,6 +24,24 @@
         <input type="submit" value=">"/>
     </form>
 
+    <div class="startgrid">
+        <p>Project name: </p>
+        <p class="secondcol" th:text="${project.getProject_name()}">Project name</p>
+
+        <p>City: </p>
+        <p class="secondcol" th:text="${project.getCity()}">City</p>
+
+        <p>Info: </p>
+        <p class="secondcol" th:text="${project.getInfo()}">Info</p>
+
+        <p>Internal: </p>
+        <p class="secondcol" th:text="${project.isInternal()}">Internal</p>
+
+        <p>Length in days: </p>
+        <p class="secondcol" th:text="${project.getLength_in_days}">Length of project</p>
+
+    </div>
+</div>
 </main>
 </body>
 </html>

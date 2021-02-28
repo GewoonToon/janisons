@@ -1,5 +1,8 @@
 package be.thomasmore.janisons.controllers;
 
+import be.thomasmore.janisons.model.Project;
+import be.thomasmore.janisons.repositories.ProjectRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,9 @@ public class HomeController {
 
     private final String[] projectNames = {"Modernising the building", "Improving work efficiency", "Removing excess data", "Making an app"};
 
+    @Autowired
+    private ProjectRepository projectRepository;
+
     @GetMapping({"/", "/home"})
     public String home(Model model){
         return "home";
@@ -25,32 +31,34 @@ public class HomeController {
 
     @GetMapping("/projectlist")
     public String projects(Model model){
-        model.addAttribute("projectNames", projectNames);
+        Iterable<Project> projects = projectRepository.findAll();
+        model.addAttribute("projects", projects);
         return "projectlist";
     }
 
     @GetMapping({"/projectdetails", "/projectdetails/{optionalIndex}"})
     public String projectDetails(Model model, @PathVariable Optional<Integer> optionalIndex){
-        String projectName = null;
+        Project project = null;
         ArrayList<String> errors = new ArrayList<>();
-        int projectIndex=0;
+        int projectIndex=1;
 
         if(optionalIndex.isPresent()){
             projectIndex=optionalIndex.get();
         }
         else{errors.add("No indexnumber found");}
 
-        if (projectIndex<0 || projectIndex > projectNames.length-1){
+        if (projectIndex<1 || projectIndex > projectRepository.count()){
             errors.add("Indexnumber is not found in database");
         }
 
-        if(errors.isEmpty()){
-            projectName= projectNames[projectIndex];
+        if(errors.isEmpty() && projectRepository.findById(projectIndex).isPresent()){
+            project= projectRepository.findById(projectIndex).get();
         }
 
         model.addAttribute("index", projectIndex);
+        model.addAttribute("count", projectRepository.count());
         model.addAttribute("errors", errors);
-        model.addAttribute("projectName", projectName);
+        model.addAttribute("project", project);
 
         return "projectdetails";
 
