@@ -122,6 +122,10 @@ DYNAMIC BUTTON TAGS
     margin: 2px;
 }
 
+.prevnextbuttons{
+    display: flex;
+}
+
 .startgrid{
     display: grid;
     grid-template-columns: 1fr 3fr;
