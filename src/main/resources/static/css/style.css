@@ -79,6 +79,10 @@ h1{
     font-size: 2rem;
 }
 
+h2{
+    padding: 10px;
+}
+
 
 /*
 WHO AM I TAGS
@@ -108,8 +112,8 @@ WHO AM I TAGS
 DYNAMIC BUTTON TAGS
  */
 
-#ProjectList{
-    padding:5%;
+.ProjectList{
+    padding:3%;
 }
 
 .projectButtons{

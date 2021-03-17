@@ -50,6 +50,25 @@
         <p class="secondcol" th:text="${project.length_in_days}">Length of project</p>
 
     </div>
+
+    <div class=ProjectList th:if="${!project.meetings.isEmpty()}">
+        <h2>Meetings: </h2>
+        <div class=projectButtons th:each="meeting : ${project.meetings}">
+            <a class="projectButton"
+               th:href="@{|/meetingdetails/${meeting.id}}"
+               th:text="|${meeting.name}|">Meeting name</a>
+        </div>
+    </div>
+
+
+    <div class=ProjectList th:if="${!project.meetings.isEmpty()}">
+        <h2>Leader: </h2>
+        <div class=projectButtons th:each="meeting : ${project.meetings}">
+            <a class="projectButton"
+               th:href="@{|/meetingdetails/${meeting.id}}"
+               th:text="|${meeting.name}|">Meeting name</a>
+        </div>
+    </div>
 </div>
 </main>
 </body>

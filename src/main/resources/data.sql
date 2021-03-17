@@ -9,3 +9,19 @@ values(3, 'Removing excess data', 'Mechelen', 'We remove excess data from our se
 
 insert into PROJECT (ID, PROJECT_NAME, CITY, INFO, INTERNAL, LENGTH_IN_DAYS)
 values(4, 'Making an app', 'Mechelen', 'Making an app to reach out to our clients and make it easier to contact us for ideas', true, 90);
+
+
+insert into MEETING (ID, NAME, BIO, DATE)
+values(1,'Pre build', 'Laying the groundwork for some internal projects', '2021-05-20');
+
+insert into MEETING (ID, NAME, BIO, DATE)
+values(2, 'Data management', 'Decide what to do with our data, what is important and what we can clean up', '2021-05-25');
+
+insert into MEETING (ID, NAME, BIO, DATE)
+values(3, 'Future projects', 'What are our future projects going to be and what should be add', '2021-06-05');
+
+
+insert into PROJECT_MEETINGS (PROJECTS_ID, MEETINGS_ID) values(1, 1);
+insert into PROJECT_MEETINGS (PROJECTS_ID, MEETINGS_ID) values(3, 1);
+insert into PROJECT_MEETINGS (PROJECTS_ID, MEETINGS_ID) values(4, 1);
+insert into PROJECT_MEETINGS (PROJECTS_ID, MEETINGS_ID) values(3, 2);

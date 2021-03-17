@@ -9,14 +9,14 @@
 <body>
 <div th:replace="fragments/header :: header">Header</div>
 <main>
-<div class="ProjectList">
-    <div class="projectButtons" th:each="project : ${projects}">
+    <div class="ProjectList">
+        <div class="projectButtons" th:each="meeting : ${meetings}">
 
-        <a class="projectButton" th:href="@{|/projectdetails/${project.id}|}"
-           th:text="|${project.project_name}|">Project name</a>
+            <a class="projectButton" th:href="@{|/meetingdetails/${meeting.id}|}"
+               th:text="|${meeting.name}|">Project name</a>
 
+        </div>
     </div>
-</div>
 
 </main>
 </body>

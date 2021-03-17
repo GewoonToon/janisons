@@ -1,7 +1,7 @@
 package be.thomasmore.janisons.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Project {
@@ -11,6 +11,12 @@ public class Project {
     private String project_name, city, info;
     private boolean internal;
     private int length_in_days;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<Meeting> meetings;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Leader leader;
 
     public Project(){
 
@@ -48,5 +54,15 @@ public class Project {
 
     public String isInternal(){
         return (internal) ? "yes" : "no";
+    }
+
+
+
+    public Collection<Meeting> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(Collection<Meeting> meetings) {
+        this.meetings = meetings;
     }
 }
