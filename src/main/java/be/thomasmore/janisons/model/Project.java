@@ -65,4 +65,8 @@ public class Project {
     public void setMeetings(Collection<Meeting> meetings) {
         this.meetings = meetings;
     }
+
+    public Leader getLeader() {
+        return leader;
+    }
 }

@@ -3,6 +3,7 @@ package be.thomasmore.janisons.controllers;
 import be.thomasmore.janisons.model.Leader;
 import be.thomasmore.janisons.model.Project;
 import be.thomasmore.janisons.repositories.LeaderRepository;
+import be.thomasmore.janisons.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ public class LeaderController {
 
     @Autowired
     private LeaderRepository leaderRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @GetMapping({"/leaderdetails", "/leaderdetails/{id}"})
     public String projectDetails(Model model, @PathVariable Optional<Integer> id){
@@ -39,6 +43,7 @@ public class LeaderController {
             leader = optionalLeader.get();}
 
 
+        model.addAttribute("projects", projectRepository.findByLeader(leader));
         model.addAttribute("index", leaderIndex);
         model.addAttribute("errors", errors);
         model.addAttribute("leader", leader);

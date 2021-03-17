@@ -51,6 +51,7 @@ private ProjectRepository projectRepository;
 
 
         model.addAttribute("index", projectIndex);
+        model.addAttribute("count", projectRepository.count());
         model.addAttribute("errors", errors);
         model.addAttribute("project", project);
 

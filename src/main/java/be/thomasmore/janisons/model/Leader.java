@@ -2,6 +2,8 @@ package be.thomasmore.janisons.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Collection;
 
 @Entity
 public class Leader {
@@ -34,5 +36,16 @@ public class Leader {
 
     public String getEmail() {
         return email;
+    }
+
+    @OneToMany(mappedBy = "leader")
+    private Collection<Project> project;
+
+    public Collection<Project> getProject() {
+        return project;
+    }
+
+    public void setProject(Collection<Project> project) {
+        this.project = project;
     }
 }

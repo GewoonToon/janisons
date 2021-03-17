@@ -61,12 +61,12 @@
     </div>
 
 
-    <div class=ProjectList th:if="${!project.meetings.isEmpty()}">
+    <div class=ProjectList th:if="${project.leader}">
         <h2>Leader: </h2>
-        <div class=projectButtons th:each="meeting : ${project.meetings}">
+<div class="projectButtons">
             <a class="projectButton"
-               th:href="@{|/meetingdetails/${meeting.id}}"
-               th:text="|${meeting.name}|">Meeting name</a>
+               th:href="@{|/leaderdetails/${project.leader.id}}"
+               th:text="|${project.leader.name}|">Leader name</a>
         </div>
     </div>
 </div>
