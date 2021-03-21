@@ -9,6 +9,32 @@
 <body>
 <div th:replace="fragments/header :: header">Header</div>
 <main>
+    <div th:if="${projects!=null}">
+        <div th:if="${filter}" class="filter">
+            <a class="filter" th:href="@{/projectlist}">/\</a>
+            <form>
+                <label for="keyword" class="filtername">City name: </label>
+                <input type="text" id="keyword" name="keyword" th:value="${keyword}">
+                <p>Length of the project in days</p>
+                <label for="minDays" class="filtername">Days between
+                    <label for="maxDays" class="filtername"></label>
+                    <input type="number" id="minDays" name="minDays" th:value="${minD}">
+                    and <input type="number" id="maxDays" name="maxDays" th:value="${maxD}">
+                </label>
+                <p>Internal: </p>
+                <label for="iyes" class="filtername">Yes </label>
+                <input type="radio" id="iyes" name="filterinternal" value="yes" th:checked="${internal.equals('yes')}">
+                <label for="ino" class="filtername">No </label>
+                <input type="radio" id="ino" name="filterinternal" value="no" th:checked="${internal.equals('no')}">
+                <label for="iall" class="filtername">All </label>
+                <input type="radio" id="iall" name="filterinternal" value="all" th:checked="${internal.equals('all')}">
+
+
+                <input type="submit" value="search">
+            </form>
+        </div>
+        <a th:unless="${filter}" class="filter" th:href="@{/projectlist/filter}">\/</a>
+
 <div class="ProjectList">
     <div class="projectButtons" th:each="project : ${projects}">
 
@@ -17,7 +43,7 @@
 
     </div>
 </div>
-
+    </div>
 </main>
 </body>
 </html>

@@ -70,7 +70,7 @@ nav ul li a:hover{
 TEXT DECORATION
 */
 
-p,a,li,h1,h2,h3{
+p,a,li,h1,h2,h3, label{
     font-family: Verdana, sans-serif;
     padding: 2px;
 }
@@ -135,3 +135,6 @@ DYNAMIC BUTTON TAGS
     grid-template-columns: 1fr 3fr;
 }
 
+.filter{
+    float: right;
+}

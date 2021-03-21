@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -22,9 +23,40 @@ private ProjectRepository projectRepository;
 
     private Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
-    @GetMapping("/projectlist")
-    public String projects(Model model){
-        Iterable<Project> projects = projectRepository.findAll();
+    @GetMapping({"/projectlist", "/projectlist/{optfilter}"})
+    public String projects(Model model, @PathVariable Optional<String> optfilter,
+                           @RequestParam(required=false) String keyword,
+                           @RequestParam(required=false) Integer minDays,
+                           @RequestParam(required=false) Integer maxDays,
+                           @RequestParam(required=false) String filterinternal){
+
+        logger.info(filterinternal);
+        logger.info(keyword);
+        logger.info(String.format("projectList -- minD%d", minDays));
+        logger.info(String.format("projectList -- maxD%d", maxDays));
+
+        ArrayList<String> errors = new ArrayList<>();
+        ArrayList<Project> projects = new ArrayList<>();
+        boolean filter = false;
+        Boolean internal = null;
+
+        if(optfilter.isPresent() && optfilter.get().equals("filter")){
+            filter = true;
+        }
+        else{errors.add("Geef een filter");}
+
+        if(filterinternal!=null && filterinternal.equals("yes")){internal = true;}
+        if(filterinternal!=null && filterinternal.equals("no")){internal = false;}
+
+        for(Project project : projectRepository.findByCriteria(minDays, maxDays, internal, keyword)){
+            projects.add(project);
+        }
+
+        model.addAttribute("internal", (filterinternal==null) ? "all" : filterinternal);
+        model.addAttribute("maxD", maxDays);
+        model.addAttribute("minD", minDays);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("filter", filter);
         model.addAttribute("projects", projects);
         return "projectlist";
     }
