@@ -22,6 +22,10 @@ public class Leader {
     public Leader() {
     }
 
+    public Leader(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

@@ -22,6 +22,10 @@ public class Project {
     public Project(){
     }
 
+    public Project(int id) {
+        this.id = id;
+    }
+
     public Project(String project_name, String city, String info, boolean internal, int length_in_days, String imageUrl) {
         this.project_name = project_name;
         this.city = city;
@@ -73,5 +77,9 @@ public class Project {
 
     public Leader getLeader() {
         return leader;
+    }
+
+    public void setLeader(Leader leader) {
+        this.leader = leader;
     }
 }

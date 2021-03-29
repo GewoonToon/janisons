@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="fragments/stylesheets :: stylesheet"></div>
+    <title>Project details</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<main>
+
+    <div th:if="${errors}">
+        <p th:each="error : ${errors}" th:text="${error}">error</p>
+    </div>
+
+    <div th:if="${project!=null}" th:object="${project}">
+
+
+        <form th:action="@{|/admin/projectedit/${project.id}|}" method="post">
+            <div class="startgrid">
+
+            <label for="name" class="firstcol">Name: </label>
+            <input class="secondcol inputfield" type="text" id="name" th:field="*{project_name}">
+
+            <label for="city" class="firstcol">City: </label>
+            <input class="secondcol inputfield" type="text" id="city" th:field="*{city}">
+
+            <label for="info" class="firstcol">Info: </label>
+            <input class="secondcol inputfield" type="text" id="info" th:field="*{info}">
+
+            <label for="internal" class="firstcol">Internal: </label>
+            <input class="secondcol inputfield" type="text" id="internal" th:field="*{internal}">
+
+            <label for="length" class="firstcol">Length in days: </label>
+            <input class="secondcol inputfield" type="text" id="length" th:field="*{length_in_days}">
+
+                <p class="firstcol">Leader: </p>
+                <select  id="leaderId" class="secondcol" name="leaderId">
+                    <option th:each="leader : ${leaders}" th:value="${leader.id}" th:text="${leader.name}" th:selected="${project.leader.id == leader.id}"></option>
+                </select>
+            </div>
+            <div>
+                <a class="smallButton" th:href="@{|/projectdetails/${project.id}|}">Cancel</a>
+            </div>
+            <div>
+                <input type="submit" class="submitButton" value="Save">
+            </div>
+        </form>
+
+    </div>
+</main>
+</body>
+</html>
