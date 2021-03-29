@@ -11,6 +11,7 @@ public class Project {
     private String project_name, city, info;
     private boolean internal;
     private int length_in_days;
+    private String imageUrl;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Meeting> meetings;
@@ -19,15 +20,15 @@ public class Project {
     private Leader leader;
 
     public Project(){
-
     }
 
-    public Project(String project_name, String city, String info, boolean internal, int length_in_days) {
+    public Project(String project_name, String city, String info, boolean internal, int length_in_days, String imageUrl) {
         this.project_name = project_name;
         this.city = city;
         this.info = info;
         this.internal = internal;
         this.length_in_days = length_in_days;
+        this.imageUrl = imageUrl;
     }
 
     public int getId(){return id;}
@@ -42,6 +43,10 @@ public class Project {
 
     public String getInfo() {
         return info;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public boolean getInternal() {

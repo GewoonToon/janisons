@@ -35,11 +35,13 @@
         </div>
         <a th:unless="${filter}" class="filter" th:href="@{/projectlist/filter}">\/</a>
 
-<div class="ProjectList">
+<div class="ProjectGrid">
     <div class="projectButtons" th:each="project : ${projects}">
 
-        <a class="projectButton" th:href="@{|/projectdetails/${project.id}|}"
-           th:text="|${project.project_name}|">Project name</a>
+        <a class="projectButton fullSize" th:href="@{|/projectdetails/${project.id}|}">
+            <div class="gridImage" ><img th:src="${project.imageUrl}"></div>
+            <span th:text="|${project.project_name}|">Project name</span>
+        </a>
 
     </div>
 </div>

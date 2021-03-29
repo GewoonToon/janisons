@@ -113,6 +113,12 @@ DYNAMIC BUTTON TAGS
  */
 
 .ProjectList{
+    padding: 3%;
+}
+
+.ProjectGrid{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
     padding:3%;
 }
 
@@ -126,6 +132,10 @@ DYNAMIC BUTTON TAGS
     margin: 2px;
 }
 
+.fullSize{
+    width:100%;
+}
+
 .prevnextbuttons{
     display: flex;
 }
@@ -137,4 +147,9 @@ DYNAMIC BUTTON TAGS
 
 .filter{
     float: right;
+}
+.gridImage > img{
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
 }
