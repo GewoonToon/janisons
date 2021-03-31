@@ -28,6 +28,7 @@
                     <label for="info" class="firstcol">Info: </label>
                     <input class="secondcol inputfield" type="text" id="info" th:field="*{info}">
 
+                    <p>Internal: </p>
                     <select id="internal" class="secondcol" name="internal">
                         <option th:value="true">Yes</option>
                         <option th:value="false">No</option>
@@ -36,6 +37,7 @@
                     <label for="length" class="firstcol">Length in days: </label>
                     <input class="secondcol inputfield" type="number" id="length" th:field="*{length_in_days}">
 
+                    <p>Leader:</p>
                     <select  id="leaderId" class="secondcol" name="leaderId">
                         <option th:each="leader : ${leaders}" th:value="${leader.id}" th:text="${leader.name}"></option>
                     </select>

@@ -47,7 +47,7 @@ public class AdminController {
     }
 
     @PostMapping("/projectedit/{id}")
-    public String partyEditPost(Model model, @PathVariable Optional<Integer> id,
+    public String projectEditPost(Model model, @PathVariable Optional<Integer> id,
                                 @ModelAttribute Project project,
                                 @RequestParam Integer leaderId){
         logger.info("projectEditPost "+id);

@@ -84,4 +84,24 @@ public class Project {
     public void setLeader(Leader leader) {
         this.leader = leader;
     }
+
+    public void setProject_name(String project_name) {
+        this.project_name = project_name;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setInternal(boolean internal) {
+        this.internal = internal;
+    }
+
+    public void setLength_in_days(int length_in_days) {
+        this.length_in_days = length_in_days;
+    }
 }
