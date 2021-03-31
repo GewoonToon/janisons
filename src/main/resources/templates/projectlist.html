@@ -10,8 +10,10 @@
 <div th:replace="fragments/header :: header">Header</div>
 <main>
     <div th:if="${projects!=null}">
+        <a th:href="@{|/admin/projectadd|}">Add a project</a>
         <div th:if="${filter}" class="filter">
             <a class="filter" th:href="@{/projectlist}">/\</a>
+
             <form>
                 <label for="keyword" class="filtername">City name: </label>
                 <input type="text" id="keyword" name="keyword" th:value="${keyword}">
