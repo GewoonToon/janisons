@@ -20,8 +20,8 @@
         <form th:action="@{|/admin/projectedit/${project.id}|}" method="post">
             <div class="startgrid">
 
-            <label for="name" class="firstcol">Name: </label>
-            <input class="secondcol inputfield" type="text" id="name" th:field="*{project_name}">
+            <label for="project_name" class="firstcol">Name: </label>
+            <input class="secondcol inputfield" type="text" id="project_name" th:field="*{project_name}">
 
             <label for="city" class="firstcol">City: </label>
             <input class="secondcol inputfield" type="text" id="city" th:field="*{city}">

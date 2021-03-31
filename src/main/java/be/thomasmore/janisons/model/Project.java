@@ -6,8 +6,10 @@ import java.util.Collection;
 @Entity
 public class Project {
 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_generator")
+    @SequenceGenerator(name = "project_generator", sequenceName = "project_seq", allocationSize = 1)
     @Id
-    private int id;
+    private Integer id;
     private String project_name, city, info;
     private boolean internal;
     private int length_in_days;
@@ -35,7 +37,7 @@ public class Project {
         this.imageUrl = imageUrl;
     }
 
-    public int getId(){return id;}
+    public Integer getId(){return id;}
 
     public String getProject_name() {
         return project_name;

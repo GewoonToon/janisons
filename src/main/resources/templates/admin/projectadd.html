@@ -2,72 +2,57 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <div th:replace="fragments/stylesheets :: stylesheet"></div>
-    <title>Project details</title>
+    <meta charset="UTF-8">
+    <title>Party New</title>
 </head>
 <body>
 <div th:replace="fragments/header :: header">Header</div>
 <main>
-
-    <div th:if="${errors}">
-        <p th:each="error : ${errors}" th:text="${error}">error</p>
-    </div>
-
-    <div th:if="${project!=null}">
-
-        <div class="prevnextbuttons">
-            <div th:if="${index==1}" >
-                <a th:href="@{|/projectdetails/${count}|}"><</a>
-            </div>
-
-            <div  th:if="${index!=1}">
-                <a th:href="@{|/projectdetails/${(index+-1)}|}"><</a>
-            </div>
-
-
-
-            <div th:if="${count==index}" >
-                <a th:href="@{|/projectdetails/1|}">></a>
-            </div>
-            <div th:if="${count!=index}">
-                <a th:href="@{|/projectdetails/${(index+1)}|}">></a>
-            </div>
-        </div>
-        <h1 th:text="${project.project_name}">Project name</h1>
-        <div class="startgrid">
-
-            <p>City: </p>
-            <p class="secondcol" th:text="${project.city}">City</p>
-
-            <p>Info: </p>
-            <p class="secondcol" th:text="${project.info}">Info</p>
-
-            <p>Internal: </p>
-            <p class="secondcol" th:text="${project.isInternal()}">Internal</p>
-
-            <p>Length in days: </p>
-            <p class="secondcol" th:text="${project.length_in_days}">Length of project</p>
-
+    <div class="row1">
+        <div th:if="${errors}">
+            <p th:each="error : ${errors}" th:text="${error}">error</p>
         </div>
 
-        <div class=ProjectList th:if="${!project.meetings.isEmpty()}">
-            <h2>Meetings: </h2>
-            <div class=projectButtons th:each="meeting : ${project.meetings}">
-                <a class="projectButton"
-                   th:href="@{|/meetingdetails/${meeting.id}}"
-                   th:text="|${meeting.name}|">Meeting name</a>
-            </div>
-        </div>
+        <div th:object="${project}">
+            <h2>Add a project</h2>
+            <form th:action="@{|/admin/projectadd|}" method="post">
+                <div class="startgrid">
+
+                    <label for="name" class="firstcol">Name: </label>
+                    <input class="secondcol inputfield" type="text" id="name" th:field="*{project_name}">
+
+                    <label for="city" class="firstcol">City: </label>
+                    <input class="secondcol inputfield" type="text" id="city" th:field="*{city}">
+
+                    <label for="info" class="firstcol">Info: </label>
+                    <input class="secondcol inputfield" type="text" id="info" th:field="*{info}">
+
+                    <select id="internal" class="secondcol" name="internal">
+                        <option th:value="true">Yes</option>
+                        <option th:value="false">No</option>
+                    </select>
+
+                    <label for="length" class="firstcol">Length in days: </label>
+                    <input class="secondcol inputfield" type="number" id="length" th:field="*{length_in_days}">
+
+                    <select  id="leaderId" class="secondcol" name="leaderId">
+                        <option th:each="leader : ${leaders}" th:value="${leader.id}" th:text="${leader.name}"></option>
+                    </select>
 
 
-        <div class=ProjectList th:if="${project.leader}">
-            <h2>Leader: </h2>
-            <div class="projectButtons">
-                <a class="projectButton"
-                   th:href="@{|/leaderdetails/${project.leader.id}}"
-                   th:text="|${project.leader.name}|">Leader name</a>
-            </div>
+
+                </div>
+
+                <div>
+                    <a class="buttonLook smallButton" th:href="@{|/projectlist|}">Cancel</a>
+                </div>
+                <div>
+                    <input type="submit" class="submitButton" value="Create">
+                </div>
+            </form>
+
+
         </div>
     </div>
 </main>

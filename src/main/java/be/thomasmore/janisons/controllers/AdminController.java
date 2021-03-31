@@ -67,9 +67,28 @@ public class AdminController {
         return "redirect:/projectdetails/"+projectIndex;
     }
 
+    @GetMapping("/projectadd")
+    public String projectAdd(Model model){
+        ArrayList<String> errors = new ArrayList<>();
+        model.addAttribute("errors", errors);
+        model.addAttribute("project", new Project());
+        model.addAttribute("leaders", leaderRepository.findAll());
+
+        return "admin/projectadd";
+    }
+
+    @PostMapping("/projectadd")
+    public String ProjectAddPost(Model model,
+                               @ModelAttribute("project") Project project,
+                               @RequestParam int leaderId){
+        project.setLeader(new Leader(leaderId));
+        projectRepository.save(project);
+        return "redirect:/projectdetails/" + project.getId();
+    }
+
     @ModelAttribute("project")
     public Project findProject(@PathVariable (required = false) Integer id){
-        if(id==null){return null;}
+        if(id==null){return new Project();}
         logger.info("findproject "+id);
         Optional<Project> optionalProject =projectRepository.findById(id);
         if(optionalProject.isPresent()){
